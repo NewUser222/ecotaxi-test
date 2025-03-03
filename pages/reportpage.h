@@ -52,8 +52,6 @@ private slots:
 
     void on_ToPDFButton_clicked();
 
-    // void on_ToPDFButtonSecond_clicked();
-
     void onSectionResized(int logicalIndex, int oldSize, int newSize);
 
     void onSortIndicatorChanged(int logicalIndex, Qt::SortOrder order);

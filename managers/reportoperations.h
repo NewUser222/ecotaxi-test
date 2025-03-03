@@ -28,10 +28,6 @@ public:
     QVariantList static getLocationsReport(QDate fromDate, QDate toDate);
     QVariantList static getAllLocationsReport(QDate fromDate, QDate toDate);
 
-    //мои изменения
-    QVariantList static getChargesByDriversReport(QDate fromDate, QDate toDate);
-    QVariantList static getAllChargesByDriversReport(QDate fromDate, QDate toDate);
-
     QVariantList static getChargesReport(QDate fromDate, QDate toDate);
     QVariantList static getAllChargesReport(QDate fromDate, QDate toDate);
 
@@ -84,11 +80,6 @@ public:
 
     QVariantList static getFinesReport();
     QVariantList static getNotPaidFinesReport();
-
-    //мои изменения
-    QVariantList static getChargesByDriverReport(int driverId, QDate fromDate, QDate toDate);
-    QVariantList static getAllChargesByDriverReport(int driverId, QDate fromDate, QDate toDate);
-
 };
 
 #endif // REPORTOPERATIONS_H

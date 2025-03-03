@@ -15,7 +15,6 @@ MainWindow::MainWindow(nm *nav, QWidget *parent)
     ui->FinesButton->setCurrentIndex(-1);
 
     ui->timeEdit->setDisabled(true);
-    QComboBox *reportsBox = ui->ReportsButton;
 
     // hide settings and reports button if user is not admin
     if (!u.checkIsAdmin())
@@ -24,18 +23,7 @@ MainWindow::MainWindow(nm *nav, QWidget *parent)
         ui->SettingsButton->removeItem(6);
         ui->SettingsButton->removeItem(5);
         ui->SettingsButton->removeItem(2);
-        // ui->ReportsButton->setDisabled(true);
-
-        // Удаляем все пункты кроме "ПО ЛОКАЦИЯМ" (мои изменения)
-        for (int i = reportsBox->count() - 1; i >= 0; --i)
-        {
-            if (reportsBox->itemText(i) != "ПО ЛОКАЦИЯМ")
-            {
-                reportsBox->removeItem(i);
-            }
-        }
-
-
+        ui->ReportsButton->setDisabled(true);
     }
     else if (u.getId() != -1)
     {
@@ -184,26 +172,12 @@ void MainWindow::on_SettingsButton_currentIndexChanged(int index)
     }
     setSettingIndex();
 }
-
 void MainWindow::on_ReportsButton_currentIndexChanged(int index)
 {
-    qDebug() << "Выбран индекс: " << index;
     setReportIndex();
-    // мои изменения
-    userSession &u = userSession::getInstance();
-
-    if (!u.checkIsAdmin()) {
-        if (index == 0) {
-            nav->openReport(4); // Открытие отчёта по локациям
-        }
-    }
-    else {
-        if (index > 7) {
-            index += 7;
-        }
-        qDebug() << "Перед вызовом openReport, index = " << index;
-        nav->openReport(index);
-    }
+    if (index > 7)
+        index += 7;
+    nav->openReport(index);
 }
 
 void MainWindow::on_FinesButton_currentIndexChanged(int index)
